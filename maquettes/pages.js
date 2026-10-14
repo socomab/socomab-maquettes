@@ -83,3 +83,13 @@
     document.querySelector('[data-sel-next]').addEventListener('click', function () { by(1); });
   }
 })();
+
+/* Article : sommaire ouvert sur ordinateur, replié par défaut en mobile */
+(function () {
+  var d = document.querySelector('[data-toc]'); if (!d) return;
+  var mq = window.matchMedia('(min-width:1021px)');
+  var set = function () { d.open = mq.matches; };
+  set(); mq.addEventListener('change', set);
+  d.querySelector('summary').addEventListener('click', function (e) { if (mq.matches) e.preventDefault(); });
+  d.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { if (!mq.matches) d.open = false; }); });
+})();

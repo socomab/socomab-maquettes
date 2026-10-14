@@ -158,16 +158,16 @@
 .rd-more__all{display:inline-flex;align-items:center;gap:8px;color:var(--marine);font-weight:700;text-decoration:none}
 .rd-more__all:hover{text-decoration:underline}
 /* visionneuse */
-.lb{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px 72px;background:rgba(6,20,40,.92)}
-.lb[hidden]{display:none}
-.lb figure{margin:0;max-width:1200px;width:100%;text-align:center}
-.lb img{max-width:100%;max-height:calc(100vh - 120px);border-radius:var(--r);object-fit:contain}
-.lb figcaption{margin-top:12px;color:#dbe5f4;font-size:.95rem}
-.lb__x,.lb__nav{position:absolute;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-size:1.8rem;line-height:1}
-.lb__x{top:18px;right:18px;width:44px;height:44px}
-.lb__nav{top:50%;width:48px;height:48px;transform:translateY(-50%)}
-.lb__prev{left:16px} .lb__next{right:16px}
-.lb__x:hover,.lb__nav:hover{background:rgba(255,255,255,.24)}
+.lbx{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px 72px;background:rgba(6,20,40,.92)}
+.lbx[hidden]{display:none}
+.lbx figure{margin:0;max-width:1200px;width:100%;text-align:center}
+.lbx img{max-width:100%;max-height:calc(100vh - 120px);border-radius:var(--r);object-fit:contain}
+.lbx figcaption{margin-top:12px;color:#dbe5f4;font-size:.95rem}
+.lbx__x,.lbx__nav{position:absolute;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-size:1.8rem;line-height:1}
+.lbx__x{top:18px;right:18px;width:44px;height:44px}
+.lbx__nav{top:50%;width:48px;height:48px;transform:translateY(-50%)}
+.lbx__prev{left:16px} .lbx__next{right:16px}
+.lbx__x:hover,.lbx__nav:hover{background:rgba(255,255,255,.24)}
 
 /* --- Formulaires (contact, SAV) --- */
 .fm{gap:18px}
@@ -292,8 +292,8 @@
   .fm__grid{grid-template-columns:1fr}
   .post__prods ul{grid-template-columns:1fr 1fr}
   .post__body{font-size:1rem}
-  .lb{padding:16px}
-  .lb__nav{top:auto;bottom:18px;transform:none}
+  .lbx{padding:16px}
+  .lbx__nav{top:auto;bottom:18px;transform:none}
 }
 @media (max-width:420px){ .rd-gal__grid{grid-template-columns:1fr} }
 .post__body,.post__toc,.rd__txt,.sv__info{min-width:0}
@@ -394,3 +394,39 @@
   .eq__nav .btn{flex:1}
   .sel__track{grid-auto-columns:78%}
 }
+
+/* ===================== Retours v13 ===================== */
+/* article : titre du formulaire bien visible */
+.eq__title{margin:0 0 26px;text-align:center;color:var(--marine);font-size:clamp(1.8rem,1.1rem + 1.6vw,2.6rem);line-height:1.15;letter-spacing:-.02em}
+/* article : titre en 3 lignes max, jamais de « ? » seul */
+.pg-band--post h1{font-size:clamp(1.8rem,1rem + 1.75vw,2.6rem);text-wrap:balance}
+/* article : auteur sous l'image à la une en mobile */
+.post-meta--m{display:none}
+/* article : sommaire repliable */
+.post__toc summary{list-style:none;cursor:default}
+.post__toc summary::-webkit-details-marker{display:none}
+.post__toc-in[open] summary{margin-bottom:12px}
+/* auteur : « À propos de l'auteur » sur une ligne */
+.post__author-k{white-space:nowrap;letter-spacing:.08em}
+/* sélection de produits : images pleine largeur dans chaque carte */
+.sel .pc__img{padding:0;box-sizing:border-box;aspect-ratio:3/2;overflow:hidden}
+.sel .pc__img img{width:100%;height:100%;object-fit:cover}
+/* réalisations : une colonne en mobile, cartes pleine largeur (annule la largeur du carrousel de l'accueil) */
+.rl__grid .rcard{width:auto}
+@media (max-width:1020px){
+  .post-meta--d{display:none}
+  .post-meta--m{display:flex;margin-top:0}
+  .post__toc summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin:0}
+  .post__toc summary::after{content:"";width:10px;height:10px;border-right:2px solid var(--marine);border-bottom:2px solid var(--marine);transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+  .post__toc-in[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+  .post__toc-in{padding:16px 18px}
+}
+@media (max-width:760px){
+  .rl__grid{grid-template-columns:1fr;gap:26px}
+  .rl__grid .rcard__img{aspect-ratio:4/3}
+  .rl__grid .rcard__type{top:12px;left:12px;font-size:.7rem;padding:4px 10px;letter-spacing:.06em}
+  .rl__grid .rcard h3{font-size:1.1rem}
+  .post__author{grid-template-columns:56px 1fr;gap:14px}
+  .post__author img{width:56px;height:56px}
+}
+@media (max-width:760px){ .pg-band--post h1{font-size:clamp(1.45rem,1rem + 2.2vw,1.7rem)} }
