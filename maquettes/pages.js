@@ -52,3 +52,34 @@
     });
   });
 })();
+/* Article : formulaire de devis en 3 étapes et carrousel de la sélection de produits */
+(function () {
+  var f = document.querySelector('[data-eq]');
+  if (f) {
+    var steps = [].slice.call(f.querySelectorAll('[data-eq-step]')), dots = [].slice.call(f.querySelectorAll('[data-eq-dot]')), cur = 0;
+    var err = function (st, msg) { var e = st.querySelector('.eq__err'); if (!e) { e = document.createElement('p'); e.className = 'eq__err'; e.setAttribute('role', 'alert'); st.querySelector('.eq__nav').before(e); } e.textContent = msg; e.hidden = !msg; };
+    var go = function (i) {
+      cur = i; steps.forEach(function (s, k) { s.hidden = k !== i; });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); d.classList.toggle('is-done', k < i); });
+      var first = steps[i].querySelector('input'); if (first) first.focus({ preventScroll: true });
+    };
+    var valid = function (i) {
+      var st = steps[i];
+      if (i === 0 && !st.querySelector('input:checked')) { err(st, 'Choisissez votre métier pour continuer.'); return false; }
+      if (i === 1 && !st.querySelector('input[type=checkbox]:checked')) { err(st, 'Choisissez au moins un équipement.'); return false; }
+      if (i === 2) { var bad = [].slice.call(st.querySelectorAll('input[required]')).filter(function (x) { return !x.value.trim() || !x.checkValidity(); }); if (bad.length) { err(st, 'Merci de compléter les champs obligatoires.'); bad[0].focus(); return false; } }
+      err(st, ''); return true;
+    };
+    f.addEventListener('change', function (e) { var st = e.target.closest('[data-eq-step]'), m = st && st.querySelector('.eq__err'); if (m) m.hidden = true; });
+    f.querySelectorAll('[data-eq-next]').forEach(function (b) { b.addEventListener('click', function () { if (valid(cur)) go(cur + 1); }); });
+    f.querySelectorAll('[data-eq-prev]').forEach(function (b) { b.addEventListener('click', function () { go(cur - 1); }); });
+    f.querySelectorAll('input[name=metier]').forEach(function (r) { r.addEventListener('change', function () { if (valid(0)) setTimeout(function () { go(1); }, 180); }); });
+    f.addEventListener('submit', function (e) { e.preventDefault(); if (!valid(2)) return; steps[2].innerHTML = '<div class="eq__done"><b>Merci, votre demande est envoyée.</b>Maquette : aucun envoi réel. Sur le site, un conseiller vous rappelle dans la journée.</div>'; dots.forEach(function (d) { d.classList.remove('is-on'); d.classList.add('is-done'); }); });
+  }
+  var t = document.querySelector('[data-sel]');
+  if (t) {
+    var by = function (d) { var c = t.querySelector('.pc'); t.scrollBy({ left: d * (c ? c.getBoundingClientRect().width + 16 : 300), behavior: 'smooth' }); };
+    document.querySelector('[data-sel-prev]').addEventListener('click', function () { by(-1); });
+    document.querySelector('[data-sel-next]').addEventListener('click', function () { by(1); });
+  }
+})();

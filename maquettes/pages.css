@@ -301,3 +301,96 @@
 /* liste des réalisations : vraie grille en mobile (pas de carrousel comme sur l'accueil) */
 @media (max-width:760px){ .rl__grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;margin-right:0;padding-right:0;scroll-snap-type:none} }
 @media (max-width:760px){ .rl__grid .rcard__type{top:8px;left:8px;max-width:calc(100% - 16px);font-size:.6rem;padding:3px 7px;letter-spacing:.04em} .rl__grid .rcard h3{font-size:.95rem} }
+
+/* ===================== Retours v12 ===================== */
+/* contact : raccourci devis en jaune, comme le bouton « Votre devis en 24h » */
+.ct__links a.ct__link--y{background:var(--jaune);border-color:var(--jaune)}
+.ct__links a.ct__link--y:hover{background:var(--jaune-h);border-color:var(--jaune-h)}
+.ct__links a.ct__link--y svg{background:rgba(255,255,255,.55)}
+.ct__links a.ct__link--y small{color:var(--marine)}
+
+/* article : formulaire de devis en 3 étapes (mêmes questions que le site actuel) */
+.eq__kick{margin:0 0 14px;text-align:center;font-weight:800;color:var(--marine);font-size:1.1rem}
+.eq__card{max-width:860px;margin:0 auto;padding:clamp(22px,3vw,36px);border-radius:var(--r-l);background:#fff;border:1px solid var(--trait);box-shadow:var(--o2)}
+.eq__card h2{margin:0 0 18px;text-align:center;color:var(--marine);font-size:clamp(1.5rem,1.1rem + 1.1vw,2rem)}
+.eq__steps{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;counter-reset:none}
+.eq__steps li{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px;border-radius:var(--r);background:var(--ciel-pp);color:var(--gris);font-weight:700;font-size:.9rem;text-align:center}
+.eq__steps li span{display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--trait);font-size:.82rem}
+.eq__steps li.is-on{background:var(--marine);color:#fff}
+.eq__steps li.is-on span{background:var(--jaune);border-color:var(--jaune);color:var(--marine)}
+.eq__steps li.is-done{color:var(--marine)}
+.eq__steps li.is-done span{background:var(--marine);border-color:var(--marine);color:#fff}
+.eq__step{margin:0;padding:0;border:0}
+.eq__step[hidden]{display:none}
+.eq__step legend{margin:0 0 4px;color:var(--marine);font-weight:800;font-size:1.2rem}
+.eq__hint{margin:0 0 18px;color:var(--gris);font-size:.95rem}
+.eq__sub{margin:22px 0 10px;color:var(--marine);font-weight:800}
+.eq__tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.eq-tile,.eq-chk,.eq-pill{position:relative;cursor:pointer}
+.eq-tile input,.eq-chk input,.eq-pill input{position:absolute;opacity:0;pointer-events:none}
+.eq-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:104px;padding:14px 10px;border:1.5px solid var(--trait);border-radius:var(--r);background:#fff;text-align:center;font-weight:700;font-size:.9rem;color:var(--encre);transition:border-color .2s,background-color .2s}
+.eq-tile__e{font-size:1.7rem;line-height:1}
+.eq-chk span,.eq-pill span{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--trait);border-radius:var(--r);background:#fff;font-weight:600;font-size:.92rem;color:var(--encre);transition:border-color .2s,background-color .2s}
+.eq-chk span::before{content:"";flex:none;width:18px;height:18px;border:1.5px solid #b9c7da;border-radius:4px;background:#fff center/12px no-repeat}
+.eq__chks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.eq__pills{display:flex;flex-wrap:wrap;gap:10px}
+.eq-pill span{padding:10px 16px}
+.eq-tile:hover,.eq-chk:hover span,.eq-pill:hover span{border-color:var(--marine)}
+.eq-tile:has(input:checked),.eq-chk input:checked+span,.eq-pill input:checked+span{border-color:var(--marine);background:var(--ciel-p);color:var(--marine)}
+.eq-chk input:checked+span::before{background-color:var(--marine);border-color:var(--marine);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12 5 5 9-10' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E")}
+.eq-tile input:focus-visible~span,.eq-chk input:focus-visible+span,.eq-pill input:focus-visible+span{outline:3px solid var(--marine);outline-offset:2px}
+.eq__nav{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.eq__legal{margin:14px 0 0;text-align:center;font-size:.85rem;color:var(--gris)}
+.eq .fm__f em{font-style:normal;font-weight:400;color:var(--gris)}
+.eq__err{margin:12px 0 0;color:#b42318;font-weight:700;font-size:.9rem}
+.eq__done{text-align:center;padding:20px 0}
+.eq__done b{display:block;color:var(--marine);font-size:1.3rem;margin-bottom:6px}
+
+/* article : auteur + avis clients (résumé des avis comme sur le site) */
+.post-end__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.post-end .post__author{margin:0;align-items:center}
+.rv-sum{padding:22px 24px;border:1px solid var(--trait);border-radius:var(--r-l);background:#fff}
+.rv-sum__stars{position:relative;display:inline-block;font-size:1.5rem;line-height:1;letter-spacing:3px;color:#d5dde8}
+.rv-sum__stars::before{content:"★★★★★"}
+.rv-sum__stars span{position:absolute;inset:0 auto 0 0;width:var(--v);overflow:hidden;color:#f5b301;white-space:nowrap}
+.rv-sum__stars span::before{content:"★★★★★"}
+.rv-sum__txt{margin:6px 0 14px;color:var(--encre)}
+.rv-sum__txt b{color:var(--marine);font-size:1.15rem}
+.rv-sum__txt span{color:var(--gris)}
+.rv-sum__bars{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.rv-sum__bars li{display:grid;grid-template-columns:80px 1fr 40px;align-items:center;gap:10px;font-size:.86rem;color:var(--gris)}
+.rv-sum__bars i{display:block;height:8px;border-radius:4px;background:var(--ciel-p);overflow:hidden}
+.rv-sum__bars i b{display:block;height:100%;background:#f5b301}
+.rv-sum__bars em{font-style:normal;text-align:right;font-weight:700;color:var(--encre)}
+
+/* article : sélection de produits (cartes identiques aux pages catégorie) */
+.pc{display:flex;flex-direction:column;background:#fff;font-family:"Open Sans",sans-serif}
+.pc__img{display:flex;align-items:center;justify-content:center;padding:0 20px;aspect-ratio:229/153;box-sizing:content-box}
+.pc__img img{width:100%;height:100%;object-fit:contain}
+.pc__name{display:flex;align-items:center;min-height:61px;margin:0;padding:0 5px 0 25px;border-bottom:1px solid #e4e4e4;font-size:15px;font-weight:500;line-height:1.35;letter-spacing:0;color:#393738}
+.pc__name a{color:inherit;text-decoration:none}
+.pc__name a:hover{color:var(--marine)}
+.pc__row{display:flex;align-items:center;gap:9px;font-size:12px;line-height:1.5;color:#333}
+.pc__grp{min-height:75px;padding:5px 10px 5px 0}
+.pc__ico{display:flex;flex:none;width:91px;justify-content:center}
+.pc__ico img{width:auto;height:45px}
+.pc__temp{min-height:86px;padding:10px 10px 10px 31px;border-top:1px solid #e4e4e4;gap:22px}
+.pc__temp svg{flex:none;width:40px;height:40px;fill:#393738}
+.pc__price{display:flex;align-items:center;justify-content:center;gap:6px;min-height:50px;margin:auto 0 0;padding:15px 0;background:#fae051;color:#000;font-size:13px;font-weight:700;letter-spacing:1.2px}
+.pc__cta{display:flex;align-items:center;justify-content:center;min-height:50px;background:#393738;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:background-color .2s}
+.pc__cta:hover{background:#6e6c6d}
+.sel__track{list-style:none;margin:0;padding:0 0 6px;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3 * 16px) / 4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.sel__track::-webkit-scrollbar{display:none}
+.sel__track .pc{scroll-snap-align:start;border:1px solid var(--trait);border-radius:var(--r);overflow:hidden}
+.sel__arrows{display:flex;gap:8px}
+.sel__arrows button{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--trait);border-radius:50%;background:#fff;color:var(--marine);font-size:1.6rem;line-height:1;cursor:pointer}
+.sel__arrows button:hover{border-color:var(--marine)}
+
+@media (max-width:1020px){ .sel__track{grid-auto-columns:calc((100% - 2 * 16px) / 3)} .post-end__grid{grid-template-columns:1fr} }
+@media (max-width:760px){
+  .eq__tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eq__chks{grid-template-columns:1fr}
+  .eq__steps li{flex-direction:column;gap:4px;font-size:.78rem;padding:8px 4px}
+  .eq__nav .btn{flex:1}
+  .sel__track{grid-auto-columns:78%}
+}
