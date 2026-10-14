@@ -881,7 +881,6 @@ h1,h2,h3{color:var(--marine)}
 .hd__bar .nav__btn,.hd__bar .nav__link,.hd__bar .nav__item:first-child .nav__btn{height:50px;padding:0 16px;border-radius:0;color:#fff;font-weight:700;font-size:.95rem}
 .hd__bar .nav__btn:hover,.hd__bar .nav__link:hover,.hd__bar .nav__btn[aria-expanded="true"]{background:rgba(255,255,255,.12);color:#fff}
 .hd__bar .chev{stroke:#fff}
-.hd__bar .nav__btn[aria-expanded="true"]{box-shadow:inset 0 -3px 0 var(--jaune)}
 .hd--2l .mega{top:100%}
 .hd--2l .mega__in{border-top:0}
 @media (max-width:1380px){ .hd__links a{padding:8px 7px;font-size:.86rem} }
@@ -926,12 +925,18 @@ h1,h2,h3{color:var(--marine)}
 /* footer : une seule colonne Produits (ancres exactes du texte du footer actuel) */
 .ft__top{grid-template-columns:1.5fr 1.3fr 1fr 1fr}
 @media (max-width:1020px){ .ft__top{grid-template-columns:1fr 1fr} .ft__brand{grid-column:1/-1} }
+/* footer : colonne Produits sur 2 sous-colonnes (retour 14/10) */
+.ft__top{grid-template-columns:1.3fr 2.3fr 1fr 1fr;column-gap:32px}
+.ft__col--2{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));column-gap:36px;row-gap:9px;align-content:start}
+.ft__col--2 .ft__ttl{grid-column:1/-1}
+@media (max-width:1020px){ .ft__top{grid-template-columns:1fr 1fr} .ft__col--2{grid-column:1/-1} }
+@media (max-width:420px){ .ft__col--2{column-gap:16px} }
 
 /* ===== Header v9 : disposition identique au header actuel de socomab.com (retour Jordan 14/10) =====
    Ligne 1 blanche (logo, liens, téléphone, recherche) : défile avec la page.
    Ligne 2 marine (catégories, panier, devis) : seule à rester collée en haut. */
-.hd3{--l1:72px;position:sticky;top:calc(-1 * var(--l1));background:#fff;backdrop-filter:none}
-.hd3.is-stuck{box-shadow:0 6px 24px rgba(10,38,73,.12)}
+.hd3{--l1:72px;position:sticky;top:calc(-1 * var(--l1));background:#fff;backdrop-filter:none;border-bottom:0}
+.hd3.is-stuck{box-shadow:0 6px 24px rgba(10,38,73,.12);border-bottom:0}
 .hd3__in{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center}
 .hd3__top .hd3__in{height:var(--l1);gap:24px}
 .hd3 .hd__logo img{width:190px}
@@ -954,11 +959,10 @@ h1,h2,h3{color:var(--marine)}
 .hd3 .nav__list{gap:2px;height:50px;margin-left:-14px}
 .hd3 .nav__btn,.hd3 .nav__link,.hd3 .nav__item:first-child .nav__btn{height:50px;padding:0 14px;border-radius:0;color:#fff;font-weight:600;font-size:.98rem}
 .hd3 .nav__btn:hover,.hd3 .nav__link:hover,.hd3 .nav__btn[aria-expanded="true"]{background:rgba(255,255,255,.12);color:#fff}
-.hd3 .nav__btn[aria-expanded="true"]{box-shadow:inset 0 -3px 0 var(--jaune)}
 .hd3__bar .hd__cart{flex:none;margin:0;color:#fff}
 .hd3__bar .hd__cart:hover{background:rgba(255,255,255,.12)}
 .hd3__bar .hd__cart svg{fill:#fff}
-.hd3__devis{flex:none;min-height:40px;padding:8px 18px;gap:8px;font-size:.92rem}
+.hd3__devis{flex:none;min-height:40px;padding:8px 18px;gap:8px;font-size:.92rem;box-shadow:none}
 .hd3__devis svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 .hd3 .mega{top:100%}
 .hd3 .mega__in{grid-template-columns:1fr 1fr 1.2fr}
@@ -1006,14 +1010,14 @@ h1,h2,h3{color:var(--marine)}
 .hero2__card{max-width:600px;padding:34px 36px 32px;border-radius:var(--r-l);background:rgba(255,255,255,.86);backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);box-shadow:0 20px 50px rgba(10,38,73,.22);border:1px solid rgba(255,255,255,.6)}
 .hero--v2 .hero2__card .hero__rating{color:var(--gris);margin-bottom:16px}
 .hero--v2 .hero2__card .hero__rating b{color:var(--encre)}
-.hero--v2 .hero2__card h1{color:var(--marine);text-shadow:none;font-size:clamp(2rem,1rem + 2.1vw,3.1rem)}
+.hero--v2 .hero2__card h1{color:var(--marine);text-shadow:none;font-size:clamp(1.6rem,.95rem + 1.35vw,2.25rem)}
 .hero--v2 .hero2__card .hero__ctas{margin-top:26px}
 .hero2__dots{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:6px;margin:0;z-index:2}
 .hero2__dots button{background:rgba(255,255,255,.55)}
 .hero2__dots button[aria-selected="true"]{background:#fff}
 @media (max-width:760px){
-  .hero2{min-height:auto;align-items:stretch}
-  .hero2__in{padding:180px 12px 48px}
+  .hero2{min-height:560px;align-items:stretch}
+  .hero2__in{justify-content:center;padding:56px 12px 56px}
   .hero2__card{padding:22px 20px;background:rgba(255,255,255,.92)}
   .hero--v2 .hero2__card .hero__ctas{margin-top:20px}
   .hero2__dots{bottom:12px}
