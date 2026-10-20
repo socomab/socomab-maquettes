@@ -1067,3 +1067,14 @@ h1,h2,h3{color:var(--marine)}
 .cfg .tag-y::before{content:"★";color:var(--ciel)}
 .cfg.cfg--light .tag-y{background:var(--ciel-l);color:var(--marine)}
 .cfg.cfg--light .tag-y::before{color:var(--marine)}
+/* v17 : dégradé vertical aussi sur la colonne bleu ciel des héros (pages catégorie), sans halo */
+.hero__txt{background:linear-gradient(180deg,#fff 0%,var(--ciel-p) 100%)}
+.hero__txt::after{display:none}
+@media (max-width:760px){ .hero--cat .hero__grid{background:linear-gradient(180deg,#fff 0%,var(--ciel-p) 100%)} }
+/* v17 : filtres « Tous / Proximité / Épiceries & GMS » = même bouton que « À chaque commerce » */
+.filters{gap:10px}
+.filters .chip{min-height:46px;padding:10px 18px;font-size:1rem;font-weight:700;line-height:1.6;white-space:nowrap}
+@media (max-width:760px){
+  .filters{gap:10px}
+  .filters .chip{padding:9px 10px;font-size:.84rem}
+}
