@@ -1032,3 +1032,20 @@ h1,h2,h3{color:var(--marine)}
   .hd3__devis{padding:8px 12px;font-size:.85rem}
   .hd3__bar .hd3__in{gap:8px}
 }
+
+/* v14 : méga-menus sans image — deux colonnes de liens, panneau ajusté au contenu */
+.hd3 .nav__item.has-mega{position:relative}
+.hd3 .mega{left:-28px;right:auto;width:max-content;padding:0}
+.hd3 .mega__in{max-width:none;margin:0;grid-template-columns:repeat(2,minmax(200px,max-content));column-gap:48px;border-radius:0 0 var(--r) var(--r)}
+
+/* v14 : « À chaque commerce » — une rangée, boutons blancs bien visibles, défilement automatique */
+.cbar--auto{margin-bottom:22px}
+.cbar--auto .metiers{gap:10px}
+.cbar--auto .metier{position:relative;overflow:hidden;background:#fff;border:1px solid #c9d6ea;box-shadow:0 2px 6px rgba(14,53,105,.08);cursor:pointer}
+.cbar--auto .metier:hover{border-color:var(--marine);box-shadow:0 6px 14px rgba(14,53,105,.14)}
+.cbar--auto .metier span{position:relative;z-index:1}
+.cbar--auto .metier.is-on{background:var(--jaune);border-color:var(--jaune)}
+.cbar--auto .metier::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--marine);opacity:.55}
+.cbar--auto.is-playing .metier.is-on::after{animation:metier-prog var(--auto,4500ms) linear forwards}
+@keyframes metier-prog{to{width:100%}}
+@media (prefers-reduced-motion:reduce){ .cbar--auto .metier::after{display:none} }

@@ -169,7 +169,35 @@
       $$('.metiers', cbar).forEach((g) => { g.hidden = g.dataset.u !== u.dataset.u; });
       showM($('.metiers[data-u="' + u.dataset.u + '"] .metier', cbar).dataset.m);
     }));
-    $$('.metier', cbar).forEach((b) => b.addEventListener('click', () => showM(b.dataset.m)));
+    $$('.metier', cbar).forEach((b) => b.addEventListener('click', () => { showM(b.dataset.m); stopAuto(); }));
+    /* v14 : défilement automatique ; s'arrête dès qu'on choisit un métier, en pause au survol */
+    let timer = null;
+    const delai = parseInt(cbar.dataset.auto || '0', 10);
+    const reduit = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const suivant = () => {
+      const btns = $$('.metier', cbar);
+      const i = btns.findIndex((b) => b.classList.contains('is-on'));
+      showM(btns[(i + 1) % btns.length].dataset.m);
+      restart();
+    };
+    const restart = () => {
+      clearTimeout(timer);
+      cbar.classList.remove('is-playing'); void cbar.offsetWidth; cbar.classList.add('is-playing');
+      timer = setTimeout(suivant, delai);
+    };
+    const pause = () => { clearTimeout(timer); cbar.classList.remove('is-playing'); };
+    function stopAuto() { pause(); cbar.dataset.auto = '0'; }
+    if (delai > 0 && !reduit) {
+      cbar.style.setProperty('--auto', delai + 'ms');
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((es) => es.forEach((e) => {
+          if (cbar.dataset.auto === '0') return;
+          if (e.isIntersecting) restart(); else pause();
+        }), { threshold: 0.35 }).observe(box);
+      } else restart();
+      box.addEventListener('mouseenter', () => { if (cbar.dataset.auto !== '0') pause(); });
+      box.addEventListener('mouseleave', () => { if (cbar.dataset.auto !== '0') restart(); });
+    }
   }
 
 

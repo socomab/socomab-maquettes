@@ -3,8 +3,7 @@
 
 /* --- Bandeau titre : la « grille » du site actuel, redessinée --- */
 .pg-band{position:relative;overflow:hidden;background-color:var(--ciel-pp);
-  background-image:linear-gradient(rgba(14,53,105,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(14,53,105,.06) 1px,transparent 1px);
-  background-size:44px 44px;border-bottom:1px solid var(--trait)}
+  border-bottom:1px solid var(--trait)}
 .pg-band::after{content:"";position:absolute;inset:auto -10% -60% auto;width:620px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(105,156,233,.22),transparent);pointer-events:none}
 .pg-band__in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:26px;padding-bottom:56px}
 .pg-band .crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem;color:var(--gris);margin-bottom:34px}
@@ -462,3 +461,9 @@
 }
 .post-end__grid>*,.post__author>div{min-width:0}
 @media (max-width:380px){ .post__author-k{font-size:.66rem;letter-spacing:.05em} .post__author{padding:18px;gap:12px} }
+
+/* v14 : héros sans image (À propos, SAV, Réalisations), comme Contact */
+.pg-band--noimg .pg-band__grid{grid-template-columns:minmax(0,1fr);justify-items:center;padding-bottom:56px}
+.pg-band--noimg .pg-band__txt{display:flex;flex-direction:column;align-items:center;text-align:center}
+.pg-band--noimg .pg-band__ctas{justify-content:center}
+@media (max-width:760px){ .pg-band--noimg .pg-band__grid{padding-bottom:36px} }
