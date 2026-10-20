@@ -170,7 +170,7 @@
       showM($('.metiers[data-u="' + u.dataset.u + '"] .metier', cbar).dataset.m);
     }));
     $$('.metier', cbar).forEach((b) => b.addEventListener('click', () => { showM(b.dataset.m); stopAuto(); }));
-    /* v14 : défilement automatique ; s'arrête dès qu'on choisit un métier, en pause au survol */
+    /* v14-v15 : défilement automatique (2,5 s) ; s'arrête dès qu'on choisit un métier */
     let timer = null;
     const delai = parseInt(cbar.dataset.auto || '0', 10);
     const reduit = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -195,8 +195,6 @@
           if (e.isIntersecting) restart(); else pause();
         }), { threshold: 0.35 }).observe(box);
       } else restart();
-      box.addEventListener('mouseenter', () => { if (cbar.dataset.auto !== '0') pause(); });
-      box.addEventListener('mouseleave', () => { if (cbar.dataset.auto !== '0') restart(); });
     }
   }
 

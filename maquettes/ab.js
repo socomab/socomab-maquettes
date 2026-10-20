@@ -24,6 +24,16 @@
   }
   appliquer(v);
 
+  /* v15 : propositions de fond pour les héros des pages (?fond=1…5, 0 = actuel) */
+  var KEYF = 'socomab-maquette-fond', fond = '0';
+  try {
+    var qf = new URLSearchParams(location.search).get('fond');
+    if (qf !== null && /^[0-5]$/.test(qf)) { fond = qf; localStorage.setItem(KEYF, fond); }
+    else { fond = localStorage.getItem(KEYF) || '0'; }
+  } catch (e) { /* rien */ }
+  var poserFond = function (f) { fond = f; if (f === '0') document.documentElement.removeAttribute('data-fond'); else document.documentElement.setAttribute('data-fond', f); };
+  poserFond(fond);
+
   document.addEventListener('DOMContentLoaded', function () {
     var box = document.createElement('div');
     box.className = 'abx';
@@ -42,6 +52,15 @@
       maj();
     });
     maj();
+    if (document.querySelector('.pg-band') && !document.querySelector('.fonds-lbl')) {
+      var sel = document.createElement('label');
+      sel.className = 'abx__fond';
+      sel.innerHTML = 'Fond <select aria-label="Fond du héros"><option value="0">actuel</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>';
+      var s = sel.querySelector('select');
+      s.value = fond;
+      s.addEventListener('change', function () { poserFond(s.value); try { localStorage.setItem(KEYF, fond); } catch (err) { /* rien */ } });
+      box.appendChild(sel);
+    }
     document.body.appendChild(box);
   });
 })();

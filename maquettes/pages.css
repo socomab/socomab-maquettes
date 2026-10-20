@@ -42,7 +42,7 @@
 .ab-brands li{padding:8px 14px;border:1px solid var(--trait);border-radius:var(--r);background:#fff;font-weight:700;color:var(--marine);font-size:.9rem}
 .ab-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:6px 0 0;padding:0}
 .ab-chips a{display:inline-flex;padding:8px 14px;border-radius:var(--r);background:var(--ciel-p);color:var(--marine);font-weight:600;font-size:.9rem;text-decoration:none}
-.ab-chips a:hover{background:var(--marine);color:#fff}
+.ab-chips a:hover{background:var(--jaune);color:var(--marine)}
 .ab-duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
 .ab-duo a{position:relative;display:block;overflow:hidden;border-radius:var(--r);text-decoration:none}
 .ab-duo img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .5s var(--ease)}
@@ -467,3 +467,20 @@
 .pg-band--noimg .pg-band__txt{display:flex;flex-direction:column;align-items:center;text-align:center}
 .pg-band--noimg .pg-band__ctas{justify-content:center}
 @media (max-width:760px){ .pg-band--noimg .pg-band__grid{padding-bottom:36px} }
+
+/* v15 : fonds des héros — halo bleu retiré ; 5 propositions (classe .fond-N ou html[data-fond="N"]) */
+.pg-band::after{display:none}
+.pg-band.fond-1,html[data-fond="1"] .pg-band{background:var(--ciel-pp)}
+.pg-band.fond-2,html[data-fond="2"] .pg-band{background:linear-gradient(180deg,#fff 0%,var(--ciel-p) 100%)}
+.pg-band.fond-3,html[data-fond="3"] .pg-band{background:linear-gradient(90deg,var(--ciel-p) 0%,var(--ciel-pp) 55%,#fff 100%)}
+.pg-band.fond-4,html[data-fond="4"] .pg-band{background:var(--ciel-p);border-bottom:4px solid var(--jaune)}
+.pg-band.fond-5,html[data-fond="5"] .pg-band{background:var(--marine);border-bottom:0}
+.pg-band.fond-5 h1,html[data-fond="5"] .pg-band h1{color:#fff}
+.pg-band.fond-5 .pg-band__lead,html[data-fond="5"] .pg-band .pg-band__lead{color:#dbe5f4}
+.pg-band.fond-5 .pg-band__kicker,html[data-fond="5"] .pg-band .pg-band__kicker{color:var(--jaune)}
+.pg-band.fond-5 .crumbs,.pg-band.fond-5 .crumbs a,html[data-fond="5"] .pg-band .crumbs,html[data-fond="5"] .pg-band .crumbs a{color:#b7cff4}
+.pg-band.fond-5 .crumbs [aria-current],html[data-fond="5"] .pg-band .crumbs [aria-current]{color:#fff}
+.pg-band.fond-5 .btn--line,html[data-fond="5"] .pg-band .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
+.pg-band.fond-5 .post-meta,html[data-fond="5"] .pg-band .post-meta{color:#dbe5f4}
+.fonds-lbl{max-width:var(--max);margin:0 auto;padding:28px var(--gut) 10px;font-weight:800;color:var(--marine);font-size:1.05rem}
+.fonds-lbl small{display:block;font-weight:500;color:var(--gris);font-size:.9rem;margin-top:2px}
