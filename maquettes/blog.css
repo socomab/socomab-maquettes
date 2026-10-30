@@ -61,3 +61,37 @@
   .bc-grid{grid-template-columns:1fr}
   .rel__row{gap:10px}
 }
+
+/* ===== Page générale du blog (retours du 30/10) : filtres Métier / Sujet, images entières ===== */
+.bl-top{padding-top:28px;padding-bottom:8px}
+.bl-bar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 14px;margin-bottom:26px}
+.bl-sel{position:relative;display:flex;flex-direction:column;gap:6px;min-width:250px}
+.bl-sel__lab{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.bl-sel select{appearance:none;-webkit-appearance:none;min-height:46px;padding:0 42px 0 14px;border:1px solid var(--trait);border-radius:5px;background:#fff;color:var(--encre);font:inherit;font-size:.95rem;font-weight:600;cursor:pointer}
+.bl-sel select:hover{border-color:var(--marine)}
+.bl-sel select:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
+.bl-sel__chev{position:absolute;right:14px;bottom:17px;width:12px;height:12px;fill:none;stroke:var(--marine);stroke-width:1.8;pointer-events:none}
+.bl-reset{min-height:46px;border:0;background:none;color:var(--marine-l);font:inherit;font-size:.9rem;font-weight:700;text-decoration:underline;cursor:pointer}
+.bl-reset[hidden]{display:none}
+.bl-count{margin:0 0 0 auto;align-self:center;color:var(--gris);white-space:nowrap}
+.bl-count b{color:var(--marine);font-size:1.2rem}
+.bl-feat [hidden]{display:none}
+.bl .bc-feat__img{display:flex;align-items:center;background:#fff}
+.bl .bc-feat__img img{height:auto;object-fit:contain}
+.bl .bc-feat:hover .bc-feat__img img{transform:none}
+.bl-list{padding-top:36px}
+.bl-list h2{margin:0 0 22px}
+.bl-grid .rcard__img{aspect-ratio:3/2;background:#fff}
+.bl-grid .rcard__img img{object-fit:contain}
+.bl-grid li[hidden]{display:none}
+.bl-more{margin-top:30px;text-align:center}
+.bl-more[hidden],.bl-empty[hidden],.bc-rel [hidden]{display:none}
+.post-end--solo .post-end__grid{grid-template-columns:minmax(0,560px);justify-content:center}
+@media (max-width:760px){
+  .bl-sel{min-width:0;flex:1 1 100%}
+  .bl-count{margin-left:0}
+}
+@media (max-width:760px){
+  .bl-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:26px;overflow:visible;scroll-snap-type:none;margin:0;padding:0}
+  .bl-grid>li{width:auto;min-width:0;flex:none}
+}
