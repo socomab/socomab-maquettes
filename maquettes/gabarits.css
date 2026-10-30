@@ -264,3 +264,17 @@
 .gx-sm__more::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
 .gx-sm__more[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-2px)}
 .post__body > h2:first-child,.post__body > h3:first-child,.post__body > p:first-child{margin-top:0}
+
+/* ---------- retours du 30/10 (2) ---------- */
+/* géolocalisation : note rapprochée du bloc « Faites les bons choix », plus d'air dessous */
+.gx-choice:has(+ .gx-note--sky){padding-bottom:28px}
+.gx-note--sky{padding-bottom:clamp(56px,6vw,88px)}
+@media (max-width:900px){
+  .sec.post:has(+ .gx-trio){padding-bottom:28px}
+  .sec.post + .gx-trio{padding-top:0}
+}
+/* documentation : note rapprochée de la zone de téléchargement, plus d'air dessous */
+.gx-dl:has(+ .gx-note){padding-bottom:0}
+.gx-dl + .gx-note{padding-top:28px;padding-bottom:clamp(56px,6vw,88px)}
+/* newsletter : formulaire avant le texte en mobile */
+@media (max-width:900px){.gx-nl form{order:-1}}
