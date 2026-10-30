@@ -39,3 +39,11 @@
     [].forEach.call(document.querySelectorAll('[data-q]'),function(b){b.addEventListener('click',function(){var i=document.querySelector('[data-qty]');i.value=Math.max(1,(+i.value||1)+(+b.dataset.q))})});
   }
 })();
+/* Plan du site : « Voir les N autres » / « Réduire », bouton toujours sous la liste */
+[].forEach.call(document.querySelectorAll('[data-sm]'),function(b){
+  b.addEventListener('click',function(){
+    var open=b.getAttribute('aria-expanded')!=='true';
+    [].forEach.call(b.previousElementSibling.querySelectorAll('[data-x]'),function(li){li.hidden=!open});
+    b.setAttribute('aria-expanded',open);b.textContent=open?'Réduire':'Voir les '+b.dataset.n+' autres';
+  });
+});

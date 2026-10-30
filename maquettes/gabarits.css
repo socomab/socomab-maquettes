@@ -233,3 +233,34 @@
 .devis__txt .gx-addr a{color:#fff}
 .post__body iframe{width:100%;height:320px;border:0;border-radius:var(--r-l);margin-top:12px;display:block}
 .post__body img{border-radius:var(--r-l)}
+
+/* ---------- retours du 30/10 ---------- */
+/* moins de blanc entre le héros et le premier bloc */
+.page-gx .pg-band + .sec{padding-top:clamp(28px,3.5vw,44px)}
+/* texte sans sommaire : une seule colonne centrée */
+.post__grid.gx-solo{grid-template-columns:minmax(0,1fr);max-width:860px}
+/* bouton dans un texte : jamais souligné, toujours lisible au survol */
+.post__body a.btn{text-decoration:none}
+.post__body a.btn--line:hover,.post__body a.btn--line:focus-visible{--bg:var(--marine);--fg:#fff;background:var(--marine);color:#fff}
+/* listes : filtres puis recherche, bloc catégories plus compact */
+.gx-arch .gx-chips{margin-bottom:14px}
+.gx-cats{padding-block:clamp(36px,4vw,56px)}
+.gx-devis-after{padding-top:clamp(28px,3vw,40px)}
+.gx-cats + .gx-devis-after{padding-top:0}
+/* FAQ */
+.gx-faqsec .gx-faq{margin-top:0}
+/* sommaire des textes longs : jamais plus haut que l'écran */
+.post__toc ol{max-height:calc(100vh - 200px);overflow:auto;overscroll-behavior:contain}
+@media (max-width:1020px){
+  .post__toc ol{max-height:55vh;margin-bottom:0}
+  .post__grid{row-gap:24px}
+}
+/* géolocalisation : note sur fond ciel collée au bloc précédent */
+.gx-note--sky{background:var(--ciel-pp);padding-top:0}
+.gx-note--sky .avis2__card{background:#fff}
+@media (max-width:900px){.gx-choice{padding-bottom:32px}}
+/* plan du site */
+.gx-sm__more{margin-top:10px;border:0;background:none;padding:0;color:var(--marine);font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;gap:8px}
+.gx-sm__more::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.gx-sm__more[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-2px)}
+.post__body > h2:first-child,.post__body > h3:first-child,.post__body > p:first-child{margin-top:0}
