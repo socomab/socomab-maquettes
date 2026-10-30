@@ -47,3 +47,11 @@
     b.setAttribute('aria-expanded',open);b.textContent=open?'Réduire':'Voir les '+b.dataset.n+' autres';
   });
 });
+/* Calculateur de leasing : mêmes coefficients que le site */
+(function(){var f=document.querySelector('[data-leasing]');if(!f)return;
+  var c={"24":0.049718,"36":0.034552,"48":0.026997,"60":0.022486,"72":0.019497,"84":0.017378};
+  f.addEventListener('submit',function(){var p=parseFloat(document.getElementById('prix-materiel').value),n=document.getElementById('nombre-loyers').value,r=document.getElementById('resultat');
+    var e=f.querySelector('.gx-calcbox__err');if(e)e.remove();
+    if(isNaN(p)||p<=0){e=document.createElement('p');e.className='gx-calcbox__err';e.textContent='Veuillez entrer un prix valide.';f.insertBefore(e,f.querySelector('button'));return}
+    r.textContent=(p*c[n]).toFixed(2)+' € HT';});
+})();
