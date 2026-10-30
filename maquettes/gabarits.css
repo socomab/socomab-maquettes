@@ -313,3 +313,35 @@
 .gx-act span{position:absolute;inset:auto 0 0 0;padding:28px 12px 12px;background:linear-gradient(transparent,rgba(7,27,54,.85));color:#fff;font-weight:700;font-size:.92rem;line-height:1.25}
 @media (max-width:1100px){.gx-acts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:700px){.gx-acts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- retours du 30/10 (lot 2) ---------- */
+/* subventions : visuel au format des articles, plus d'air sous le H1 */
+.gx-band-logo .gx-logo{width:100%;aspect-ratio:4/3;display:grid;place-items:center;padding:8%;border-radius:var(--r-l);box-shadow:var(--o2);background:#fff}
+.gx-band-logo .gx-logo img{width:100%;max-width:460px;height:auto;aspect-ratio:auto;object-fit:contain}
+@media (min-width:901px){.gx-band-logo .pg-band__grid,.gx-band-guide .pg-band__grid{padding-bottom:clamp(36px,4vw,56px)}}
+/* guide : formulaire dans la colonne */
+.gx-gform{margin-top:20px;background:var(--marine);border-radius:var(--r-l);padding:22px;display:grid;gap:12px;color:#fff}
+.post__toc .gx-gform:first-child{margin-top:0}
+.gx-gform__t{font-weight:800;font-size:1.15rem}
+.gx-gform label{display:grid;gap:6px;font-weight:600;font-size:.88rem;color:#fff}
+.gx-gform input,.gx-gform textarea{font:inherit;min-height:44px;border:0;border-radius:var(--r);padding:10px 12px;background:#fff;color:var(--encre)}
+.gx-gform .btn{width:100%}
+.gx-gform .devis__ok{color:#fff}
+.gx-guidepost .post__toc{max-height:none}
+@media (min-width:1021px){.gx-guidepost .post__toc{position:sticky;top:calc(var(--hd) + 60px);max-height:calc(100vh - var(--hd) - 80px);overflow:auto}}
+.gx-band-guide .pg-band__media img{object-fit:contain;background:var(--ciel-pp)}
+/* parrainage : formulaire entièrement visible */
+.gx-par__form{position:static}
+/* activités : 4 par ligne, moins d'espace dessous */
+.gx-acts{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.gx-act a{aspect-ratio:4/3}
+.gx-act span{font-size:1rem;padding:36px 16px 14px}
+.gx-acts-sec{padding-bottom:clamp(24px,3vw,40px)}
+.gx-acts-sec + .sec.post{padding-top:clamp(24px,3vw,40px)}
+@media (max-width:1000px){.gx-acts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.gx-acts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media (min-width:1021px){.gx-guidepost .post__toc{position:static;max-height:none;overflow:visible}}
+.gx-acts{display:flex;flex-wrap:wrap;justify-content:center}
+.gx-act{flex:0 0 calc((100% - 3*18px)/4)}
+@media (max-width:1000px){.gx-act{flex-basis:calc((100% - 2*18px)/3)}}
+@media (max-width:700px){.gx-act{flex-basis:calc((100% - 12px)/2)}}
