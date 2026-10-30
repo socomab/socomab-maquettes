@@ -10,7 +10,7 @@
       cards.forEach(function (c) { c.classList.add('is-hidden'); });
       match.slice(0, shown).forEach(function (c) { c.classList.remove('is-hidden'); });
       if (count) count.textContent = match.length;
-      if (more) { more.parentElement.hidden = match.length <= shown; more.textContent = 'Voir plus de réalisations (' + (match.length - shown) + ')'; }
+      if (more) { more.parentElement.hidden = match.length <= shown; more.textContent = (more.dataset.label || 'Voir plus de réalisations') + ' (' + (match.length - shown) + ')'; }
     };
     document.querySelectorAll('.rl__filters .chip').forEach(function (b) {
       b.addEventListener('click', function () {

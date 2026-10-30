@@ -1,0 +1,63 @@
+/* =====================================================================
+   Page catégorie du blog (maquette « Fromagerie & crèmerie »)
+   S'appuie sur styles.css et pages.css (bandeau, fil d'Ariane, cartes,
+   filtres, devis, footer). Ici, uniquement ce qui est propre au blog.
+   ===================================================================== */
+
+/* ---------- navigation entre catégories du blog ---------- */
+.bc-nav{border-bottom:1px solid var(--trait);background:#fff}
+.bc-nav__in{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px 40px;padding-top:22px;padding-bottom:22px}
+.bc-nav__grp{min-width:0}
+.bc-nav__t{margin:0 0 10px;font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.bc-nav ul{list-style:none;margin:0;padding:0;gap:6px}
+.bc-nav li{margin:0}
+.bc-nav .chip{display:inline-flex;align-items:center;min-height:38px;padding:7px 13px;font-size:.88rem;text-decoration:none}
+.bc-nav .chip[aria-current]{pointer-events:none}
+
+/* ---------- article mère mis en avant ---------- */
+.bc-lead{padding-bottom:0}
+.bc-feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-radius:var(--r-l);overflow:hidden;background:var(--marine);color:#dbe5f4;text-decoration:none;box-shadow:var(--o2)}
+.bc-feat__img{display:block;min-height:100%;background:var(--marine-d)}
+.bc-feat__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.bc-feat:hover .bc-feat__img img{transform:scale(1.04)}
+.bc-feat__txt{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:clamp(28px,4vw,56px)}
+.bc-feat__k{padding:4px 10px;border-radius:5px;background:var(--jaune);color:var(--marine);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.bc-feat__h{color:#fff;font-size:clamp(1.6rem,1.1rem + 1.4vw,2.3rem);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+.bc-feat__p{max-width:560px;font-size:1.02rem;line-height:1.6}
+.bc-feat__m{font-size:.86rem;color:var(--ciel-l)}
+.bc-feat .lnk{color:#fff}
+.bc-feat:hover .lnk i{transform:translateX(4px)}
+
+/* ---------- liste des articles ---------- */
+.bc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bc-grid .rcard__img{aspect-ratio:4/3}
+.bc-grid .rcard h3{font-size:1.06rem;line-height:1.35}
+.bc-grid .rcard__type{background:var(--marine);color:#fff}
+
+/* ---------- gammes liées ---------- */
+.bc-rel .head{flex-direction:column;align-items:flex-start;gap:8px}
+.bc-rel h2{margin:0;color:var(--marine);font-size:clamp(1.6rem,1.1rem + 1.4vw,2.35rem);letter-spacing:-.02em}
+.bc-rel__sub{margin:0;color:var(--gris)}
+.rel__row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.rel__c{display:flex;flex-direction:column;gap:4px;height:100%;padding:12px 12px 16px;border:1px solid var(--trait);border-radius:var(--r);background:#fff;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.rel__c:hover{border-color:var(--ciel);box-shadow:var(--o2)}
+.rel__img{display:block;aspect-ratio:4/3;margin-bottom:8px;border-radius:5px;overflow:hidden;background:#fff}
+.rel__img img{width:100%;height:100%;object-fit:cover}
+.rel__c b{color:var(--marine);font-size:.98rem}
+.rel__c small{color:var(--gris);font-size:.8rem}
+
+@media (max-width:1020px){
+  .bc-nav__in{grid-template-columns:1fr}
+  .bc-feat{grid-template-columns:1fr}
+  .bc-feat__img{aspect-ratio:16/9}
+  .bc-grid,.rel__row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .bc-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .bc-nav ul::-webkit-scrollbar{display:none}
+  .bc-nav .chip{white-space:nowrap}
+}
+@media (max-width:560px){
+  .bc-grid{grid-template-columns:1fr}
+  .rel__row{gap:10px}
+}
